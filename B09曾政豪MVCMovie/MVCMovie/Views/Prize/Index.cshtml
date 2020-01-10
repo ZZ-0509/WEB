@@ -1,0 +1,52 @@
+﻿@using MVCMovie.Models;
+@model IEnumerable<Prize>
+@{
+    Layout = "~/Views/Shared/_Film.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>奖项</h2>
+    <form>
+        奖项：<input type="text" name="searchTitle" />
+        <input type="submit" value="查询" />
+    </form>
+    <table>
+        <tr>
+            <th>奖项</th>
+            <th>颁奖时间</th>
+            <th>创办时间</th>
+            <th>主办单位</th>
+         </tr>
+
+        <tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @item.Name
+                    @item.Period
+                    @item.StarTime
+                    @item.Sponsor
+
+                </td>
+                <td> 
+                    <a href="/Prize/Details?id=@item.Id">详细</a>
+                    |
+                    <a href="/Prize/Edit?id=@item.Id">编辑</a>
+                    |
+                    <a href="/Prize/Eelete?id=@item.Id">删除</a>
+                </td>
+            </tr>
+
+            }
+    </table>
+    <a href="/Prize/Add">新增</a>
+</body>
+</html>

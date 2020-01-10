@@ -1,0 +1,8 @@
+﻿@using Many.Models;
+@model IEnumerable<Role>
+<ul>
+    @foreach(var item in Model)
+    {
+        <li>@item.Name:<input type="checkbox" name="Roles" value="@item.Id" id="@item.Id"></li>
+    }
+</ul>

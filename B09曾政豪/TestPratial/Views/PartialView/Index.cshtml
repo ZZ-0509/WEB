@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <h2>调用部分视图</h2>
+        @*@Html.Action("PartialMessage", "PartialView");*@
+        @Html.Partial("~/Views/PartialView/View.cshtml");
+    </div>
+</body>
+</html>

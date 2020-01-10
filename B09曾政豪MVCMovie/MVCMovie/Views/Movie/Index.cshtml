@@ -1,0 +1,66 @@
+﻿@using MVCMovie.Models;
+@model IEnumerable<Movie>
+@{
+    Layout = "~/Views/Shared/_Film.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>电影</h2>
+    <form>
+        电影名：<input type="text" name="searchTitle" />
+        类型:@Html.DropDownList("MovieTypeId", "")
+        <input type="submit" value="查询" />
+    </form>
+
+    <table>
+        <tr>
+            <th>电影名</th>
+            <th>导演</th>
+            <th>所获奖项</th>
+            <th>片长</th>
+            <th>上映时间</th>
+            <th>价格</th>
+            <th>类型</th>
+            <th>操作</th>
+          
+        </tr>
+        <tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.MovieName</td>
+                <td>@item.Director</td>
+                @foreach (var s in item.Prizes)
+                {
+                    <td>@s.Name</td>
+                }
+                <td>@item.MovieLength</td>
+                <td>@item.Time.ToShortDateString()</td>
+                <td>@item.Price</td>
+                <td>@item.MovieType.TypeName</td>
+               
+
+                <td>
+                    <a href="/Movie/Detailed?id=@item.MovieId">详细</a>
+                    |
+                    <a href="/Movie/Edit?id=@item.MovieId">编辑</a>
+                    |
+                    <a href="/Movie/Eelete?id=@item.MovieId">删除</a>
+                </td>
+            </tr>
+
+            }
+
+        </table>
+        <a href="/Movie/Add">新增</a>
+
+    </body>
+</html>
+

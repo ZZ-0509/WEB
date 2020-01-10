@@ -1,0 +1,29 @@
+﻿@using Many.Models;
+@model User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h2>请确认要删除所选帐号吗!！</h2>
+    <div>帐号:@Model.Name</div>
+    <div> 
+        <form method="post">
+            <div>
+                <input type="hidden" value="@Model.Id" name="Id" />
+                <input type="hidden" value="@Model.Name" name="Name" />
+            </div>
+        </form>
+    </div>
+
+    <input type="submit" value="删除" />
+    <a href="/User/Display">首页</a>
+</body>
+</html>

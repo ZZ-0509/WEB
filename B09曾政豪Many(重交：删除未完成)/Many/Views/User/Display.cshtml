@@ -1,0 +1,46 @@
+﻿@using Many.Models;
+@model IEnumerable<User>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>账号</th>
+            <th>密码</th>
+            <th>注册时间</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Password</td>
+                    <td>@item.RegisterOn</td>
+
+                    <td>
+                        <a href="/User/Detailed?id=@item.Id">详细</a>
+                            |
+                        <a href="/User/Edit?id=@item.Id">编辑</a>
+                            |
+                        <a href="/User/Delete?id=@item.Id">删除</a>
+                    </td>
+
+               </tr>
+            }
+        
+
+    </table>
+    <a href="/User/Add">新增</a>
+
+</body>
+</html>

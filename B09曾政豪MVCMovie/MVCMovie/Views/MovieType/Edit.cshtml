@@ -1,0 +1,31 @@
+﻿@using MVCMovie.Models;
+@model MovieType
+@{
+    Layout = "~/Views/Shared/_Film.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <h2>编辑电影类型</h2>
+
+    <div> 
+        <form method="post">
+            <div>
+                <input type="hidden"value="@Model.MovieTypeId"name="MovieTyPeId"/>
+                电影类型:<input type="text" value="@Model.TypeName"name="TypeName"/> 
+            </div>
+            <div>
+                <input type="submit"value="编辑类型"/>
+                |
+                <a href="/MovieType/Index">首页</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

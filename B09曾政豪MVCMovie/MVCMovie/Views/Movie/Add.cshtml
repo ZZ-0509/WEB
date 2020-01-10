@@ -1,0 +1,63 @@
+﻿@using MVCMovie.Models;
+@model Movie
+@{
+    Layout = "~/Views/Shared/_Film.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+
+    @Styles.Render("~/jqueryui/css")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script>
+        $(function () {
+            $("#ReleaseDate").datepicker({
+                dateFormat: "yy-mm-dd", inline: true
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <h2>新增电影</h2>
+
+    <form method="post">
+        <div>
+            电影名：<input type="text" placeholder="输入电影名" name="MovieName">
+            @Html.ValidationMessageFor(b => b.MovieName)
+        </div>
+        <div>
+            导演:<input type="text" placeholder="输入导演" name="Director">
+        </div>
+        <div>
+            奖项:@Html.Action("Part", "Movie")
+        </div>
+        <div>
+            片长:<input type="text" placeholder="输入电影时长" name="MovieLength">
+        </div>
+        <div>
+            上映时间:<input type="text" placeholder="时间" name="Time" id="ReleaseDate">
+        </div>
+        <div>
+            价格:<input type="text" placeholder="输入电影价格" name="Price">
+        </div>
+        <div>
+            地区:<input type="text" placeholder="输入地区" name="Region">
+        </div>
+        <div>
+            类型:@Html.DropDownList("MovieTypeId")
+        </div>
+
+
+        <div>
+            <input type="submit" value="新增电影" />
+            <a href="/Movie/Index">首页</a>
+        </div>
+    </form>
+</body>
+</html>

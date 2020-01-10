@@ -1,0 +1,56 @@
+﻿@using MVCMovie.Models;
+@model Movie
+@{
+    Layout = "~/Views/Shared/_Film.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detailed</title>
+</head>
+<body>
+    <h2>电影详细</h2>
+    <div>电影:@Model.MovieName</div>
+    <div>导演：@Model.Director</div>
+    <div>片长:@Model.MovieLength</div>
+    <div>上映时间:@Model.Time</div>
+    <div>价格:@Model.Price</div>
+    <div>类型:@Model.MovieType.TypeName</div>
+    <div>地区:@Model.Region</div>
+    <div>
+        所获奖项有：
+
+            @{
+                foreach (var item in Model.Prizes)
+                {
+                    
+                        @item.Name
+                        <span>||</span>
+                }
+            }
+    </div>
+    <div>
+        @*<@*form method="post">
+            <div>
+                <input type="hidden" value="@Model.MovieType.MovieTypeId" name="MovieTypeId">
+                <input type="hidden" value="@Model.MovieId" name="MovieId" />
+                <input type="hidden" value="@Model.MovieName" name="MovieName" />
+                <input type="hidden" value="@Model.Director" name="Director" />
+                <input type="hidden" value="@Model.MovieLength" name="MovieLength" />
+                <input type="hidden" value="@Model.Time" name="Time" />
+                <input type="hidden" value="@Model.Price" name="Price" />
+                <input type="hidden" value="@Model.MovieType.TypeName" name="TypeName" />
+                <input type="hidden" value="@Model.Region" name="Region" />
+            </div>*@
+            <div>
+                <a href="/Movie/Edit?id=@Model.MovieId">编辑</a>
+                |
+                <a href="/Movie/Index">首页</a>
+            </div>
+        @*</form>*@
+    </div>
+</body>
+</html>

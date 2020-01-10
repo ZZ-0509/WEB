@@ -1,0 +1,33 @@
+﻿@using MVCMovie.Models;
+@model Prize
+@{
+    Layout = "~/Views/Shared/_Film.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <h2>奖项编辑</h2>
+    <div>
+        <form method="post">
+            <div>
+                <input type="hidden" value="@Model.Id" name="Id" />
+                奖项名称:<input type="text" value="@Model.Name" name="Name" />
+                颁奖时间：<input type="text" value="@Model.Period" name="Period" />
+                创办时间：<input type="text" value="@Model.StarTime" name="StarTime" />
+                主办单位:<input type="text" value="@Model.Sponsor" name="Sponsor" />
+            </div>
+            <div>
+                <input type="submit" value="确定" />
+                |
+                <a href="/Prize/Index">首页</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

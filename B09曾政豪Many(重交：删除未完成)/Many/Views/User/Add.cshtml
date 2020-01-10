@@ -1,0 +1,38 @@
+﻿@using Many.Models;
+@model User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+</head>
+<body>
+    <h2>添加用户</h2>
+    
+
+    <form method="post">
+        <div>
+            <div>
+                用户名:<input type="text" placeholder="输入用户名" name="Name">
+            </div>
+            <div>
+                密码:<input type="text" placeholder="输入密码" name="Password">
+            </div>
+            <div>
+                注册时间:<input type="text" placeholder="输入注册时间" name="RegisterOn">
+            </div>
+            <div>
+                分类:@Html.Action("Part", "User");
+            </div>
+        </div>
+
+            <input type="submit" value="新增电影" />
+            @Html.ActionLink("首页", "Display")
+    </form>
+</body>
+</html>

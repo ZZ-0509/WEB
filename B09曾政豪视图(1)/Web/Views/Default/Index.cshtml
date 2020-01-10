@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <form method="get">
+            姓名:<input type="text" name="emName" /> <br/>
+            工资:<input type="text" name="salary"/> <br/>
+            <input type="submit" value="提交" />
+        </form>
+        @if (ViewBag.emName != null && ViewBag.salary != null)
+        {
+            <hr/>
+            <h1>姓名:@ViewBag.emName &nbsp;&nbsp;</h1>
+            <h2>工资:@ViewBag.salary &nbsp;&nbsp;</h2>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿@using Many.Models;
+@model User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <h2>电影编辑</h2>
+    <div>
+        <form method="post">
+            <div>
+                <input type="hidden" value="@Model.Id" name="Id">
+                账号:<input type="text" value="@Model.Name" name="Name" />
+                密码：<input type="text" value="@Model.Password" name="Password" />
+                注册时间：<input type="text" value="@Model.RegisterOn" name="RegisterOn" />
+            </div>
+
+            <div>
+                角色：
+                <ul>
+                    @{ 
+                        List<Role> list = ViewBag.Role;
+                        foreach(var item in list)
+                        {
+                            <li>
+                                @item.Name:
+                                 @if (Model.Roles.Contains(item))
+                                 {
+                                     <input type="checkbox" name="Roles" value="@item.Id" id="@item.Id" checked="checked"/>
+                                 }
+                                 else
+                                 {
+                                    <input type="checkbox" name="Roles" value="@item.Id" id="@item.Id"/>
+                                 }
+
+                            </li>
+                        }
+                      }
+                </ul>
+            </div>
+
+            <div>
+                <input type="submit" value="编辑" />
+                |
+                @Html.ActionLink("首页", " Display")
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/jqueryui/css")
+    @Scripts.Render("~/bundles/jqueryui")
+</head>
+<body>
+    
+    <div>
+       <a href="/MovieType/Index"> <input type="button" value="类型" /></a>
+       <a href="/Movie/Index"> <input type="button" value="电影" /></a>
+        <a href="/Prize/Index"> <input type="button" value="奖项" /></a>
+        @RenderBody()
+    </div>
+</body>
+</html>

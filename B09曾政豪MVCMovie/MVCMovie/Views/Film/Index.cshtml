@@ -1,0 +1,49 @@
+﻿@using MVCMovie.Models;
+@model IEnumerable<Movie>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>电影</h2>
+    <table>
+        <tr>
+            <th>电影名</th>
+            <th>上映时间</th>
+            <th>价格</th>
+            <th>类型</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.MovieName</td>
+                <td>@item.Time.ToShortDateString()</td>
+                <td>@item.Price</td>
+                <td>@item.MovieType.TypeName</td>
+                
+                <td>
+                    <a href="#">详细</a>
+                    |
+                    <a href="#">编辑</a>
+                    |
+                    <a href="#">删除</a>
+                </td>
+            </tr>
+
+            }
+        </tr>
+
+     </table>
+        <a href="#">新增</a>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div id="jsonshow">
+</div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+     var myObj =
+    {
+        "Name": "网站", "Num": 3, "sites":
+        [
+        { "Name": "Google", "info": ["Android", "Google", "Google 翻译"] },
+        { "Name": "Taobao", "info": ["淘宝", "网购"] }
+        ]
+    }
+     var x = "";
+    x = myObj.Name +":"+ myObj.Num;
+    for (var i = 0; i < myObj.sites.length;i++)
+    {
+        x += "<h2>" + myObj.sites[i].Name + "</h2>";
+        for (var j = 0; j < myObj.sites[i].info.length;j++ )
+        {
+            x += myObj.sites[i].info[j]+"</br>";
+        }
+    }
+    $("#jsonshow").html(x)
+
+
+</script>
+

@@ -1,0 +1,26 @@
+﻿@using Web模型.Models;
+@using Web模型
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sata</title>
+</head>
+<body>
+    <div> 
+        <form method="post">
+            <input type="text" name="plus1" value="@Model.plus1"/>
+            <input type="button" value="+" />
+            <input type="text" name="plus2" value="@Model.plus2"/>
+            <input type="submit" value="=" />
+            <input type="text" name="Result" value="@Model.Result"/>
+        </form>
+
+    </div>
+</body>
+</html>

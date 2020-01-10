@@ -1,0 +1,66 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        @{ 
+            int num1 = 25646;
+            int num2 = 78446;
+            int result = num1 + num2;
+            @result;
+            string name = "哈哈哈哈哈";
+        }
+     </div>
+    <div>@num1+@num2=@result</div>
+    <div>@name</div>
+    <div>Hi! @name</div>
+
+    <div style="text-align:center">
+        @for(int i = 0; i < 5; i++)
+        {
+            <h1>第 @i 次</h1>
+            <p>hello文本</p>
+        }
+    </div>
+    <span>1+2=@(1+2)</span>
+
+    <div>
+    @{ 
+        var passowrd = "\"123456!@#$%^\\\"";
+        @passowrd
+    }
+     </br>
+    @@
+
+    <div>
+       32454@qq.com
+    </div>
+     @{ 
+         var qq = "123";
+     }
+     ccc@(qq)@@qq.com
+     </br>
+
+     @{ 
+         string message = "<font color='red'>红字</font>";
+         @Html.Raw(@message)
+     }
+
+     <div>
+         @{ 
+             string message1 = "<script>alert('哈喽哈喽爱我的未来')</script>";
+             @Html.Raw(@message1)
+         }
+     </div>
+
+</body>
+</html>

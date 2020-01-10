@@ -1,0 +1,54 @@
+﻿@using CRUD.HTML;
+@model IEnumerable<CRUD.Models.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>电影</h2>
+
+<p>
+    @Html.ActionLink("新增", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.movieType.TypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MovieName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Region)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.movieType.TypeName)
+           
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.MovieName)*@
+            @Html.Truncate(item.MovieName, 10)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Region)
+        </td>
+        <td>
+            @Html.ActionLink("编辑", "Edit", new { id=item.MovieId }) |
+            @Html.ActionLink("详细", "Details", new { id=item.MovieId }) |
+            @Html.ActionLink("删除", "Delete", new { id=item.MovieId })
+        </td>
+    </tr>
+}
+
+</table>

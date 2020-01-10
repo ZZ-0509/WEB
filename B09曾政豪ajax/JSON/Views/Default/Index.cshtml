@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+    <p id="jsonshow"></p>
+
+    <script>
+
+var myObj, i, j, x = "";
+myObj =
+{
+    "name":"网站",
+    "num":3,
+    "sites": [
+        { "name":"Google", "info":[ "Android", "Google 搜索", "Google 翻译" ] },
+        { "name":"Taobao", "info":[ "淘宝", "网购" ] }
+    ]
+}
+
+for (i in myObj.sites) {
+    x += "<h1>" + myObj.sites[i].name + "</h1>";
+    for (j in myObj.sites[i].info) {
+        x += myObj.sites[i].info[j] + "<br>";
+    }
+}
+
+document.getElementById("jsonshow").innerHTML = x;
+
+    </script>

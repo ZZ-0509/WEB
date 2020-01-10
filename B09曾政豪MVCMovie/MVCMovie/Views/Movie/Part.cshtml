@@ -1,0 +1,8 @@
+﻿@using MVCMovie.Models;
+@model IEnumerable<Prize>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.Name:<input type="checkbox" name="Prizes" value="@item.Id" id="@item.Id"></li>
+    }
+</ul>

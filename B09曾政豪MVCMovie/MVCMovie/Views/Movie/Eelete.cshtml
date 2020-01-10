@@ -1,0 +1,44 @@
+﻿@using MVCMovie.Models;
+@model Movie
+@{
+    Layout = "~/Views/Shared/_Film.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Eelete</title>
+</head>
+<body>
+    <h2>请确认要删除所选电影吗？？？？</h2>
+    <div>电影:@Model.MovieName</div>
+    <div>
+        所获奖项有：
+
+        @{
+            foreach (var item in Model.Prizes)
+            {
+
+                @item.Name
+                <span>||</span>
+            }
+        }
+    </div>
+
+    <div>
+        <form method="post">
+            <div>
+                <input type="hidden" value="@Model.MovieId" name="MovieId" />
+                <input type="hidden" value="@Model.MovieName" name="MovieName" />
+            </div>
+            <div>
+                <input type="submit" value="删除" />
+                |
+                <a href="/Movie/Index">返回</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿@using Many.Models;
+@model User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detailed</title>
+</head>
+<body>
+    <h2>详细</h2>
+    <div>
+        帐号：@Model.Name
+    </div>
+    <div> 
+        密码：@Model.Password
+    </div>
+    <div> 
+        注册日期：@Model.RegisterOn
+    </div>
+    角色:
+    @{ 
+        foreach(var item in Model.Roles)
+        {
+            @item.Name
+            <span>|</span>
+        }
+    }
+    <div>
+    </div>
+
+
+    <a href="/User/Edit?id=@Model.Id">编辑</a>
+    <a href="/User/Display">首页</a>
+</body>
+</html>

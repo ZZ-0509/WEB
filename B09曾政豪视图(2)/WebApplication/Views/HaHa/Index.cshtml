@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <form method="get">
+            <input type="color" name="colorl" />&nbsp;&nbsp;
+            <input type="submit" value="确定" />
+        </form>
+    </div>
+        <hr/>
+         @if (ViewBag.corol != null)
+         {
+             <div style="color:@ViewBag.corol">
+                 颜色
+             </div>
+            <hr />
+            <input type="color" name="color2" value="@ViewBag.corol">
+         }
+         
+
+</body>
+</html>

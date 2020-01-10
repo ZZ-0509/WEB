@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Film.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+    function checkName()
+    {
+        var movietype = $("#TypeName").val();
+        if(movietype =="")
+        {
+            $("#ErrorMessage").html("电影类型不能为空!！");
+            return false;
+        }
+    }
+       
+    </script>
+</head>
+<body>
+    <div id="E"></div>
+    <div> 
+        
+        <form method="post">
+            类型:<input type="text"placeholder="类型"name="TypeName" id="TypeName">
+            <input type="submit"value="新增类型" onclick="return checkName();"/>
+            <div id="ErrorMessage"></div>
+            <a href="/MovieType/Index">首页</a>
+        </form>
+    </div>
+</body>
+</html>

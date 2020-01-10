@@ -1,0 +1,31 @@
+﻿@using MVCMovie.Models;
+@model MovieType
+@{
+    Layout = "~/Views/Shared/_Film.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Eelete</title>
+</head>
+<body>
+    <h2>请确认要删除所选类型吗？？？？</h2>
+    <div>电影类型:@Model.TypeName</div>
+    <div>
+        <form method="post">
+            <div>
+                <input type="hidden" value="@Model.MovieTypeId" name="MovieTyPeId" />
+                <input type="hidden" value="@Model.TypeName" name="TypeName" />
+            </div>
+            <div>
+                <input type="submit" value="删除" />
+                |
+                <a href="/MovieType/Index">返回</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

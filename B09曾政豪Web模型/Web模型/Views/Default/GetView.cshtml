@@ -1,0 +1,26 @@
+﻿@using Web模型.Models;
+@using Web模型
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetView</title>
+</head>
+<body>
+    <div> 
+        @*@{ 
+            Employee emp = (Employee)ViewData["Employee"];
+        }*@
+        <h2>员工信息</h2>
+        <h4>姓名:@Model.Name</h4>
+        <h4>工资:@Model.Salary</h4>
+    </div>
+</body>
+</html>

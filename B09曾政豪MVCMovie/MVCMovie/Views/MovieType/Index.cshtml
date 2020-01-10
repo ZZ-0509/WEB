@@ -1,0 +1,46 @@
+﻿@using MVCMovie.Models;
+@model IEnumerable<MovieType>
+
+@{
+    Layout = "~/Views/Shared/_Film.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>电影</h2>
+    <form>
+        类型：<input type="text" name="searchTitle" />
+        <input type="submit" value="查询" />
+    </form>
+    <table>
+        <tr>
+            <th>类型</th>
+            <th>操作</th>
+        </tr>
+        <tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @item.TypeName
+                </td>
+                <td>
+                    <a href="/MovieType/Edit?id=@item.MovieTypeId">编辑</a>
+                    |
+                    <a href="/MovieType/Eelete?id=@item.MovieTypeId">删除</a>
+                </td>
+            </tr>
+
+            }
+
+        </table>
+        <a href="/MovieType/Add">新增</a>
+
+    </body>
+</html>

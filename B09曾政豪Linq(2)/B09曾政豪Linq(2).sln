@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "B09曾政豪Linq(2)", "B09曾政豪Linq(2)\B09曾政豪Linq(2).csproj", "{506671AA-015D-430C-A44C-616C04A35FED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{506671AA-015D-430C-A44C-616C04A35FED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{506671AA-015D-430C-A44C-616C04A35FED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{506671AA-015D-430C-A44C-616C04A35FED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{506671AA-015D-430C-A44C-616C04A35FED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,62 @@
+﻿@using MVCMovie.Models;
+@model Movie
+@{
+    Layout = "~/Views/Shared/_Film.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <h2>电影编辑</h2>
+    <div>
+        <form method="post">
+            <div>
+                <input type="hidden" value="@Model.MovieType.MovieTypeId" name="MovieTypeId">
+                <input type="hidden" value="@Model.MovieId" name="MovieId" />
+                电影:<input type="text" value="@Model.MovieName" name="MovieName" />
+                导演：<input type="text" value="@Model.Director" name="Director" />
+                片长：<input type="text" value="@Model.MovieLength" name="MovieLength" />
+                上映时间:<input type="text" value="@Model.Time" name="Time" />
+                地区:<input type="text" value="@Model.Region" name="Region" />
+                价格:<input type="text" value="@Model.Price" name="Price" />
+                @*类型:<input type="text" value="@Model.MovieType.TypeName" name="TypeName" />*@
+                类型:@Html.DropDownList("MovieTypeId")
+            </div>
+            <div>
+                角色：
+                <ul>
+                    @{
+                        List<Prize> list = ViewBag.Prize;
+                        foreach (var item in list)
+                        {
+                            <li>
+                                @item.Name:
+                                @if (Model.Prizes.Contains(item))
+                                {
+                                    <input type="checkbox" name="Prizes" value="@item.Id" id="@item.Id" checked="checked" />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="Prizes" value="@item.Id" id="@item.Id" />
+                                }
+
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+
+            <div>
+                <input type="submit" value="确定" />
+                |
+                <a href="/Movie/Index">首页</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
