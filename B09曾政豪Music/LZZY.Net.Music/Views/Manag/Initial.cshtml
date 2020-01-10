@@ -1,0 +1,56 @@
+﻿@model LZZY.Net.Music.Models.ManagViewModel
+
+@{
+    ViewBag.Title = "Initial";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<h2>初始化密码</h2>
+
+<h3>确认要初始化用户密码吗?？</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Regtime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Regtime)
+        </dd>
+
+    </dl>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="确定" class="btn btn-default" />
+            </div>
+        </div>
+}
+
+<div>
+    @Html.ActionLink("返回", "UserIndex")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

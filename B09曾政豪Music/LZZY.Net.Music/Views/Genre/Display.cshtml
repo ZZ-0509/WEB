@@ -1,0 +1,30 @@
+﻿@model IEnumerable<LZZY.Net.Music.Models.AlbumViewModel>
+@{
+    ViewBag.Title = "Display";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<h2>Display</h2>
+
+<ul id="album-list">
+    @foreach (var album in Model)
+    {
+        <li>
+            <a href="@Url.Action("Link","Genre",new { id=album.AlbumId})">
+                @*<img src="@album.Website" alt="@album.AlbumName"/>*@
+                @{
+                    if (string.IsNullOrEmpty(album.Website))
+                    {
+                        <img src=@Url.Content("~/Content/filepath/空白.jpg") alt="专辑封面" class="thumbnail"/>
+                    }
+                    else
+                    {
+                        <img src=@Url.Content(album.Website) alt="专辑封面" class="thumbnail" />
+                    }
+                }
+                <span>专辑：@album.AlbumName</span>
+                <span>价格：@album.Price</span>
+            </a>
+        </li>
+    }
+</ul>

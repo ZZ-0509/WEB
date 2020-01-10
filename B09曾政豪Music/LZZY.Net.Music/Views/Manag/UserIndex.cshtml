@@ -1,0 +1,35 @@
+﻿@model IEnumerable<LZZY.Net.Music.Models.ManagViewModel>
+
+@{
+    ViewBag.Title = "UserIndex";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<h2>用户管理</h2>
+
+<p>
+    @Html.ActionLink("新增", "UserCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>操作</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("初始化密码", "Initial", new { id = item.UserId }) |
+            @Html.ActionLink("删除", "UserDelete", new { id = item.UserId })
+            
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<LZZY.Net.Music.Models.GenreViewModel>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<h2>Search</h2>
+<div>
+    <form>
+        专辑名：<input type="text" id="title" name="albumserch" />
+        <input type="submit" value="查询" />
+    </form>
+</div>
+<div id="imgVerifyCode"></div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+
+        $("#btnsearch").click(function () {
+            $.ajax({
+                url: '/Home/search',
+                data: { "albumserch": $("title").val() },
+                type: 'post',
+                dataType: 'json',
+                success: function (data) {
+                    var html = "";
+                    html += '<ul id="album-list">';
+                    for (var i = 0; i < data.length; i++)
+                    {
+                        html += '<li>';
+                        html += '<a href="../../store/Detail/' + data[i].AlbumId + '">';
+                        if (data[i].Website == null)
+                        {
+                            html+='<img src=("/content/images/空白.jpg") alt="">'
+                        }
+
+
+                        html += '<span>' + data[i].Title + '</span>';
+                        html += '</a></li>';
+                    }
+                }
+            });
+        });
+</script>

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<LZZY.Net.Music.Models.ManagViewModel>
+
+@{
+    ViewBag.Title = "SingerIndex";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<h2>SingerIndex</h2>
+
+<p>
+    @Html.ActionLink("新增", "SingerCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SingerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Introduce)
+        </th>
+        <th>操作</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SingerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Introduce)
+        </td>
+        <td>
+            @Html.ActionLink("编辑", "SingerEdit", new { id = item.SingerId }) |
+            @Html.ActionLink("删除", "SingerDelete", new { id = item.SingerId })|
+            @Html.ActionLink("详细", "SingerDetails", new { id = item.SingerId}) 
+        </td>
+    </tr>
+}
+
+</table>

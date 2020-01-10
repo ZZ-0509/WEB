@@ -1,0 +1,17 @@
+﻿@model IEnumerable<LZZY.Net.Music.Models.GenreViewModel>
+
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<h2>About</h2>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            @*@item.GenreName*@
+            @Html.ActionLink(item.GenreName, "Display", "Genre", new { id = item.GenreId }, null)
+        </li>
+    }
+</ul>

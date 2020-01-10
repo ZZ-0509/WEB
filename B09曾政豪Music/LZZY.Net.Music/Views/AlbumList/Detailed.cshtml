@@ -1,0 +1,46 @@
+﻿@model LZZY.Net.Music.Models.AlbumListViewModel
+
+@{
+    ViewBag.Title = "Detailed";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<h2>Detailed</h2>
+
+<div>
+    <h4>AlbumListViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlbumName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShelfTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShelfTime)
+        </dd>
+
+    </dl>
+    <div class="col-md-offset-2">
+       <img src="@Model.Website" alt="专辑封面">
+    </div>
+</div>
+
+
+

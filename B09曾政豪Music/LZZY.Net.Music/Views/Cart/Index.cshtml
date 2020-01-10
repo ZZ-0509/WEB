@@ -1,0 +1,61 @@
+﻿@model LZZY.Net.Music.Models.CartViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table id="cartId">
+    <tr>
+        <th>专辑</th>
+        <th>价格</th>
+        <th>数量</th>
+        <th>操作</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.CartItems) {
+    <tr>
+        <td>
+            @item.Album.AlbumName
+        </td>
+        <td>
+            @item.Album.Price
+        </td>
+            
+        <td>
+            @item.Quantity
+        </td>
+        <td>
+            @*@Html.ActionLink("移出购物车", "Delete", new { /* id=item.PrimaryKey */ })*@
+            <a href="Cart/Remove?id=@item.CartId" onclick="removecart(@item.CartId)">移出购物车</a>
+        </td>
+    </tr>
+}
+    <tr>
+        <td></td>
+        <td></td>
+        <td>总价:</td>
+        <td>@Model.CartTotal</td>
+    </tr>
+</table>
+<script>
+    function removecart(id) 
+    {
+        $.ajax({
+            url: '/Cart/Remove',
+            data: {id:@Model},
+            type:'post',
+            dataType:'json',
+            success: function(data) {
+                $("#tbCart").html(data);
+                setTimeout(function () 
+                {
+                    location.reload();
+                },
+                    1000);
+            }
+        })
+    };
+</script>

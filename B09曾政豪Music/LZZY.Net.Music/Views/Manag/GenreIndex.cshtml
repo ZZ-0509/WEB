@@ -1,0 +1,40 @@
+﻿@model IEnumerable<LZZY.Net.Music.Models.ManagViewModel>
+
+@{
+    ViewBag.Title = "GenreIndex";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("新增", "GenreCreate")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GenreName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Describe)
+        </th>
+        <th>操作</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GenreName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Describe)
+        </td>
+        <td>
+            @Html.ActionLink("编辑", "GenreEdit", new { id = item.GenreId }) |
+            @Html.ActionLink("删除", "GenreDelete", new { id = item.GenreId })
+        </td>
+    </tr>
+}
+
+</table>

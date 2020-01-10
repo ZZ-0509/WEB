@@ -1,0 +1,42 @@
+﻿@model LZZY.Net.Music.Models.ManagViewModel
+
+@{
+    ViewBag.Title = "SingerDetails";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<h2>歌手编辑</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SingerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SingerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Introduce)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Introduce)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("编辑", "SingerEdit", new {  id = Model.SingerId }) |
+    @Html.ActionLink("返回", "Index")
+</p>

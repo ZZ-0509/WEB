@@ -1,0 +1,41 @@
+﻿@model LZZY.Net.Music.Models.AlbumViewModel
+
+@{
+    ViewBag.Title = "Link";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<h2>专辑名:Album</h2>
+<div>
+    <h4>@Model.AlbumName</h4>
+    <hr/>
+    <p>专辑：@Model.AlbumName</p>
+    <p>流派：@Model.GenreName</p>
+    <p>歌手：@Model.SingerName</p>
+    <p>价格：@Model.Price</p>
+    <p>
+        <img alt="@Model.AlbumName" src="@Model.Website">
+    </p>
+    <p>
+    <a Length="0" href="/Cart/AddToCart?id=@Model.AlbumId">加入购物车</a>
+    @*@Html.ActionLink("加入购物车", "Index", "Cart", new { id = Model.AlbumId })*@
+    </p>
+</div>
+<div id="cartMess"></div>
+<script>
+    $("#addcart").click(function () {
+        $.ajax({
+            url: '/Cart/AddToCart',
+            data:{id:@Model.AlbumId},
+            type:'post',
+            dataType:'json',
+            success:function(data)
+            {
+                $("#cartMess").html(data);
+                setTimeout(function(){location.reload();},3000);
+            }
+        })
+
+    })
+</script>
+

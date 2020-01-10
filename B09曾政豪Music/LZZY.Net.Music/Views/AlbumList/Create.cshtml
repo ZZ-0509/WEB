@@ -1,0 +1,118 @@
+﻿@model LZZY.Net.Music.Models.AlbumListViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<h2>新增专辑</h2>
+
+
+@using (Html.BeginForm("Create", "AlbumList", FormMethod.Post,new { enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>AlbumListViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.AlbumName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AlbumName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AlbumName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Website, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "form-control" } })*@
+                <img src=@Url.Content("~/Content/filepath/空白.jpg") alt="album Img" class="myimg" id="albumImg"/>
+                <div>图片上传&nbsp;&nbsp;<input type="file" name="fileupload" id="fileupload"/></div>
+                @if (ViewBag.error != null)
+                {
+                    <p>
+                        <span class="errorColor">@ViewBag.error</span>
+                    </p>
+                }
+                @Html.ValidationMessageFor(model => model.Website, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GenreName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.GenreName, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownList("GenreId")
+                @Html.ValidationMessageFor(model => model.GenreName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SingerName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.SingerName, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownList("SingerId")
+                @Html.ValidationMessageFor(model => model.SingerName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="新增" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("首页", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $("fileupload").change(function (e) {
+            var file = e.delegateTarget.files[0];
+            var hz = file.name.substring(file.name.indexOf(','));
+            if (!IsImage(hz.toLocaleUpperCase())) {
+                alert("文件要求的图片类型:jpg,gif,png,bmp");
+                $("#fileupload").val("");
+            }
+            else {
+                if (file.size > 2097152) {
+                    alert("图片大小越界(<2MB)");
+                    $("#fileupload").val("");
+                }
+                else {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = function (ret) {
+                        picString = reader.result
+                        $("#albumImg").attr({ "src": picString });
+                    }
+                }
+            }
+        });
+        function IsImage(hz) {
+            var ys=false;
+            var hzs=new Array(".JPG",".GIF",".PNG",".BMP");
+            for(var i=0;i<hzs.length;i++)
+            {
+                if(hz==hzs[i]){
+                    ys=true;
+                    break;
+                }
+            }
+            return ys;
+        }
+    </script>
+}

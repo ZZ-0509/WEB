@@ -1,0 +1,172 @@
+﻿@model LZZY.Net.Music.Models.AlbumListViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("Edit", "AlbumList", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>AlbumListViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.AlbumId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AlbumId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AlbumId, "", new { @class = "text-danger" })
+            </div>
+           
+        </div>*@
+        @Html.HiddenFor(model => model.AlbumId);
+        @Html.HiddenFor(model => model.Website);
+        <div class="form-group">
+            @Html.LabelFor(model => model.AlbumName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AlbumName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AlbumName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShelfTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShelfTime, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ShelfTime, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Website, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Website, "", new { @class = "text-danger" })*@
+
+                @{ 
+                    var imgurl = "";
+                    if (string.IsNullOrEmpty(Model.Website))
+                    {
+                        imgurl = Url.Content("~/Content/filepath/空白.jpg");
+                    }
+                    else
+                    {
+                        imgurl = Url.Content(Model.Website);
+                    }
+                    <img src="@imgurl" alt="album Img" class="myimg" id="albumImg"/>
+                }
+                <div class="margin-top">图片修改&nbsp;&nbsp;<input type="file" name="fileupload" id="fileupload" /></div>
+                @if (ViewBag.error != null)
+                {
+                    <p class="margin-top">
+                        <span class="errorColor">@ViewBag.error</span>
+                    </p>
+                }
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.GenreId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GenreId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GenreId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GenreName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.GenreName, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownListFor(m=>m.GenreId,Model.Genres)
+
+                @Html.ValidationMessageFor(model => model.GenreName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.SingerId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SingerId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SingerId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SingerName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.SingerName, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownListFor(m => m.SingerId, Model.Singers)
+
+                @Html.ValidationMessageFor(model => model.SingerName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="编辑" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("首页", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $("fileupload").change(function (e) {
+            var file = e.delegateTarget.files[0];
+            var hz = file.name.substring(file.name.indexOf(','));
+            if (!IsImage(hz.toLocaleUpperCase())) {
+                alert("文件要求的图片类型:jpg,gif,png,bmp");
+                $("#fileupload").val("");
+            }
+            else {
+                if (file.size > 2097152) {
+                    alert("图片大小越界(<2MB)");
+                    $("#fileupload").val("");
+                }
+                else {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = function (ret) {
+                        picString = reader.result
+                        $("#albumImg").attr({ "src": picString });
+                    }
+                }
+            }
+        });
+        function IsImage(hz) {
+            var ys=false;
+            var hzs=new Array(".JPG",".GIF",".PNG",".BMP");
+            for(var i=0;i<hzs.length;i++)
+            {
+                if(hz==hzs[i]){
+                    ys=true;
+                    break;
+                }
+            }
+            return ys;
+        }
+    </script>
+}
+
+
+}
+
+
